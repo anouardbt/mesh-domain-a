@@ -7,7 +7,7 @@ groups:
       email: data@acme.co
 
 models:
-  - name: dim_customersx
+  - name: dim_customers
     group: data_team
     access: public
     config:

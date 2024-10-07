@@ -40,6 +40,6 @@ models:
     data_product_1:
       +database: data_product_1_{{ target.name | upper }}
     data_product_2: 
-      +database: data_product_1_{{ target.name | upper }} #Make sure folder name respects database structure.
+      +database: data_product_2_{{ target.name | upper }} #Make sure folder name respects database structure.
 
 
