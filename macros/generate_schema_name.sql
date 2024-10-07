@@ -3,7 +3,7 @@
     {%- set default_schema = target.schema -%}
     {%- set branch_name = env_var('DBT_CLOUD_GIT_BRANCH') | replace('-', '_') -%}
     
-    {%- if target.name == 'dev' -%}
+    {%- if target.name == 'personal_dev' -%}
         {%- if custom_schema_name is none -%}
             {{ branch_name }}_FB_BRANCH
         {%- else -%}
