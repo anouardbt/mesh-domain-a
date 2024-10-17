@@ -2,19 +2,10 @@
 
     {%- set default_schema = target.schema -%}
     
-    {%- if target.name == 'personal_dev' -%}
-        {%- set branch_name = env_var('DBT_CLOUD_GIT_BRANCH', '') | replace('-', '_') -%}
-        {%- if custom_schema_name is none -%}
-            {{ branch_name }}_FB_BRANCH
-        {%- else -%}
-            {{ custom_schema_name | trim }}_FB_BRANCH
-        {%- endif -%}
+    {%- if custom_schema_name is none -%}
+        {{ default_schema }}
     {%- else -%}
-        {%- if custom_schema_name is none -%}
-            {{ default_schema }}
-        {%- else -%}
-            {{ default_schema }}_{{ custom_schema_name | trim }}
-        {%- endif -%}
+        {{ custom_schema_name | trim }}
     {%- endif -%}
 
 {%- endmacro %}
