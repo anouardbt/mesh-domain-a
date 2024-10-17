@@ -2,7 +2,7 @@
 # Name your project! Project names should contain only lowercase characters
 # and underscores. A good package name should reflect your organization's
 # name or the intended use of these models
-name: 'maqta_domain_a'
+name: 'dataproduct1'
 version: '1.0.0'
 config-version: 2
 
@@ -36,10 +36,12 @@ clean-targets:         # directories to be removed by `dbt clean`
 # using the `{{ config(...) }}` macro.
 
 models:
-  maqta_domain_a:
-    data_product_1:
-      +database: data_product_1_{{ target.name | upper }}
-    data_product_2: 
-      +database: data_product_2_{{ target.name | upper }} #Make sure folder name respects database structure.
+  dataproduct1:
+    silver:
+      +schema: silver
+      #+database: data_product_1_{{ target.name | upper }}
+    gold: 
+      +schema: gold
+      #+database: data_product_2_{{ target.name | upper }} #Make sure folder name respects database structure.
 
 
