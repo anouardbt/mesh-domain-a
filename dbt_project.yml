@@ -2,7 +2,7 @@
 # Name your project! Project names should contain only lowercase characters
 # and underscores. A good package name should reflect your organization's
 # name or the intended use of these models
-name: 'dataproduct1'
+name: 'project'
 version: '1.0.0'
 config-version: 2
 
@@ -34,14 +34,23 @@ clean-targets:         # directories to be removed by `dbt clean`
 # instead be materialized as tables. Any models you add to the root of the models folder will 
 # continue to be built as views. These settings can be overridden in the individual model files
 # using the `{{ config(...) }}` macro.
+on-run-start:
+  - "CREATE DATABASE IF NOT EXISTS {{ generate_database_name(pre_hook=True) }};"
 
 models:
-  dataproduct1:
-    silver:
-      +schema: silver
-      #+database: data_product_1_{{ target.name | upper }}
-    gold: 
-      +schema: gold
-      #+database: data_product_2_{{ target.name | upper }} #Make sure folder name respects database structure.
+  project:
+    dp_a:
+      silver:
+        +schema: silver
+      gold:
+        +schema: gold
+    dp_b:
+      pre-hook: 
+        - "CREATE DATABASE IF NOT EXISTS {{ generate_database_name(pre_hook=True) }}"
+      silver:
+        +schema: silver
+      gold:
+        +schema: gold
+
 
 
