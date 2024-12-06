@@ -1,1 +1,0 @@
-select * from {{ ref('demo_customer_ref') }}
